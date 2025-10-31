@@ -1,91 +1,57 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
-
 <head>
-<title>FyrStudio-Building-Avenida105-WebRotate-v3</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title>FyrStudio-Building-Avenida105-WebRotate-v3</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 
-<!-- Use this meta tag on your mobile page -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link type="text/css" rel="stylesheet" href="imagerotator/html/css/basic.css"/>
+  <script type="text/javascript" src="imagerotator/html/js/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript" src="imagerotator/html/js/imagerotator.js"></script>
 
-<!-- Use these three includes on your pages under <head> section -->
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: auto;
+    }
+    #content {
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+    #wr360PlayerId,
+    .wr360_player {
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+  </style>
 
-<link type="text/css" rel="stylesheet" href="imagerotator/html/css/basic.css"/>
-<script type="text/javascript" src="imagerotator/html/js/jquery-3.7.1.min.js"></script>
-<script type="text/javascript" src="imagerotator/html/js/imagerotator.js"></script>
-
-
-<style type= "text/css">
-
-html, body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  overflow: auto; /* deixa rolar se houver algo fora do viewer */
-}
-
-/* contêiner principal do viewer */
-#content {
-  width: 100%;
-  background: #000;
-  overflow: hidden;
-  /* altura será controlada pelo script no fim do arquivo */
-}
-
-/* o player em si */
-#wr360PlayerId,
-.wr360_player {
-  width: 100%;
-  background: #000;
-  overflow: hidden;
-  /* altura será controlada pelo script no fim do arquivo */
-}
-
-</style>
-
-
-<!-- 
-    Copy this script block and paste under your page <head> section or somewhere inside your page <body>.
-    See API sections in the user guide for more details: https://webrotate360.s3.amazonaws.com/sites/webrotate360/downloads/Resources/Readme.pdf
--->
-
-<script language="javascript" type="text/javascript">
-
-jQuery(document).ready(function(){
-
-    jQuery('#wr360PlayerId').rotator({
+  <script type="text/javascript">
+    jQuery(document).ready(function () {
+      jQuery('#wr360PlayerId').rotator({
         licenseFileURL: 'license.lic',
-		configFileURL: '360_assets/FyrStudio-Building-Avenida105-WebRotate-v3/FyrStudio-Building-Avenida105-WebRotate-v3.xml?v=2',
-		graphicsPath: 'imagerotator/html/img/basic',
+        configFileURL: '360_assets/FyrStudio-Building-Avenida105-WebRotate-v3/FyrStudio-Building-Avenida105-WebRotate-v3.xml?v=2',
+        graphicsPath: 'imagerotator/html/img/basic',
         alt: '360 degree view - FyrStudio-Building-Avenida105-WebRotate-v3',
         responsiveBaseWidth: 600,
         responsiveMinHeight: 0,
-        googleEventTracking: false,
+        googleEventTracking: false
+      });
     });
-
-});
-
-</script>
-
-<!-- End of script copy / paste -->
-
-
+  </script>
 </head>
-
-
-
 <body>
 
- <div class="responsive-wrapper-demo-do-not-copy"
-     style="max-width:1920px; margin:0 auto;">
+  <!-- ✅ AQUI estava o erro: agora tem só UM <div> -->
+  <div class="responsive-wrapper-demo-do-not-copy" style="max-width:1920px; margin:0 auto;">
 
-    <div id="content"
-         style="overflow:hidden; background:#000;">
+    <div id="content" style="overflow:hidden; background:#000;">
 
-     <div id="wr360PlayerId"
-     class="wr360_player"
-     style="background-color:#000000; width:100%;">
+      <div id="wr360PlayerId" class="wr360_player" style="background-color:#000000; width:100%;">
         <div class="stub_banner_wrap">
           <div class="stub_banner" style="aspect-ratio:1,33;">
             <img src="360_assets/FyrStudio-Building-Avenida105-WebRotate-v3/images/Aerea360000000.jpg?t=1761854776" alt="" />
@@ -96,31 +62,29 @@ jQuery(document).ready(function(){
     </div>
 
   </div>
-	
-<script>
-  function fit360() {
-    var h = window.innerHeight;
-    var el = document.getElementById('content');
-    var player = document.getElementById('wr360PlayerId');
-    if (el) {
-      el.style.height = h + 'px';
-      el.style.maxHeight = h + 'px';
-    }
-    if (player) {
-      player.style.height = h + 'px';
-      player.style.maxHeight = h + 'px';
-    }
-  }
 
-  window.addEventListener('load', function() {
-    fit360();
-    // segunda passada pra vencer o que o WebRotate fizer depois
-    setTimeout(fit360, 500);
-  });
+  <script>
+    function fit360() {
+      var h = window.innerHeight;
+      var el = document.getElementById('content');
+      var player = document.getElementById('wr360PlayerId');
+      if (el) {
+        el.style.height = h + 'px';
+        el.style.maxHeight = h + 'px';
+      }
+      if (player) {
+        player.style.height = h + 'px';
+        player.style.maxHeight = h + 'px';
+      }
+    }
 
-  window.addEventListener('resize', fit360);
-</script>
+    window.addEventListener('load', function () {
+      fit360();
+      setTimeout(fit360, 500); // passa por cima do que o WebRotate fizer
+    });
+
+    window.addEventListener('resize', fit360);
+  </script>
 
 </body>
-
 </html>
