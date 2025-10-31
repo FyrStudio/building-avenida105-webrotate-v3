@@ -21,29 +21,30 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
   background: #000;
+  /* deixa rolar normal */
+  overflow: auto;
 }
 
-/* força o wrapper a ter só a altura da tela */
-.responsive-wrapper-demo-do-not-copy {
-  max-width: 1920px;
+/* esse é o contêiner que o script estava esticando pra 2199px.
+   vamos limitar ele. */
+#content {
   width: 100%;
-  height: 100vh !important;
-  overflow: hidden;
+  max-height: 1080px !important;  /* não passa disso */
+  height: auto !important;         /* deixa calcular sozinho até o máximo */
+  background: #000;
+  overflow: hidden;                /* se o player tentar passar, corta */
 }
 
-/* aqui é o pulo do gato: sobrescreve o style="height: 2199px" que o script colocou */
-#content,
+/* o player em si */
 #wr360PlayerId,
 .wr360_player {
-  height: 100vh !important;
-  max-height: 100vh !important;
   width: 100% !important;
+  max-height: 1080px !important;
+  height: auto !important;
   background: #000;
-  overflow: hidden;
 }
+
 
 </style>
 
